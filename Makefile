@@ -9,3 +9,6 @@ clean:
 
 deploy: clean build
 	sls deploy --verbose --aws-profile admin
+
+web:
+	yarn dev
