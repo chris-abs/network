@@ -1,4 +1,4 @@
-.PHONY: build clean deploy
+.PHONY: build clean deploy push web
 
 build:
 	env GOARCH=amd64 GOOS=linux go build -ldflags="-s -w" -o bin/hello cmd/handlers/hello/main.go
@@ -9,3 +9,9 @@ clean:
 
 deploy: clean build
 	sls deploy --verbose --aws-profile admin
+
+push:
+	amplify push
+
+web:
+	cd cmd/web/ && yarn dev
